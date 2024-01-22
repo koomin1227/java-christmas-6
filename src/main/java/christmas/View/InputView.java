@@ -6,14 +6,20 @@ import christmas.Constant.ErrorMessage;
 public class InputView {
     private static final int START_DATE = 1;
     private static final int END_DATE = 31;
-    public int readDate() {
-        System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        String input = Console.readLine();
-        validateDate(input);
-        return Integer.parseInt(input);
+    public static int readDate() {
+        while (true) {
+            try{
+                System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
+                String input = Console.readLine();
+                validateDate(input);
+                return Integer.parseInt(input);
+            } catch(IllegalArgumentException e) {
+                System.out.println(e.getMessage() + " 다시 입력해 주세요.");
+            }
+        }
     }
 
-    private void validateDate(String input) {
+    private static void validateDate(String input) {
         if (!isNumeric(input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_DATE.getMessage());
         }
@@ -23,7 +29,7 @@ public class InputView {
         }
     }
 
-    private boolean isNumeric(String input) {
-        return input.matches("\\\\d+");
+    private static boolean isNumeric(String input) {
+        return input.matches("\\d+");
     }
 }
