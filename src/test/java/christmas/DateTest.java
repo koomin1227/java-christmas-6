@@ -1,8 +1,10 @@
 package christmas;
 
+import christmas.Constant.DateKind;
 import christmas.Domain.Date;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DateTest {
     @Test
@@ -29,5 +31,26 @@ public class DateTest {
     void Date_객체_생성() {
         String input = "12";
         new Date(input);
+    }
+
+    @Test
+    void 주말인_경우() {
+        String input = "1";
+        Date date = new Date(input);
+        assertThat(date.getKind()).isEqualTo(DateKind.WEEKEND.getKind());
+    }
+
+    @Test
+    void 평일인_경우() {
+        String input = "13";
+        Date date = new Date(input);
+        assertThat(date.getKind()).isEqualTo(DateKind.WEEKDAY.getKind());
+    }
+
+    @Test
+    void 특별_할인인_경우() {
+        String input = "25";
+        Date date = new Date(input);
+        assertThat(date.getKind()).isEqualTo(DateKind.STAR_DAY.getKind());
     }
 }
