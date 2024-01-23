@@ -10,7 +10,7 @@ public class Event {
     private int totalDiscount = 0;
 
     private final HashMap<String, Integer> benefitList = new HashMap<>();
-    Event(Date date, OrderList orderList) {
+    public Event(Date date, OrderList orderList) {
         if (orderList.getTotalPrice() > 10000){
             setPresentation(orderList.getTotalPrice());
             setDiscount(date, orderList);
