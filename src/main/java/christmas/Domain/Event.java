@@ -45,7 +45,7 @@ public class Event {
             int discountPrice = 0;
             for ( Order order : orderList.getOrders() ) {
                 if (order.getMenu().getCategory().equals(DESSERT)) {
-                    discountPrice += 2043 * order.getCount();
+                    discountPrice += 2023 * order.getCount();
                 }
             }
             totalBenefit += discountPrice;
@@ -59,7 +59,7 @@ public class Event {
             int discountPrice = 0;
             for ( Order order : orderList.getOrders() ) {
                 if (order.getMenu().getCategory().equals(MAIN)) {
-                    discountPrice += 2043 * order.getCount();
+                    discountPrice += 2023 * order.getCount();
                 }
             }
             totalBenefit += discountPrice;
