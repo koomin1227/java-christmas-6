@@ -1,5 +1,6 @@
 package christmas.View;
 
+import christmas.Domain.Event;
 import christmas.Domain.Order;
 import christmas.Domain.OrderList;
 
@@ -30,5 +31,42 @@ public class OutputView {
     public static String formatNumberWithComma(int number) {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         return decimalFormat.format(number);
+    }
+
+    public static void printPresentation(Event event) {
+        System.out.println("\n<증정 메뉴>");
+        if (event.getBenefitList().containsKey("증정 이벤트")) {
+            System.out.println("샴페인 1개");
+        } else {
+            System.out.println("없음");
+        }
+    }
+
+    public static void printBenefitList(Event event) {
+        System.out.println("\n<혜택 내역>");
+        if (event.getBenefitList().isEmpty()) {
+            System.out.println("없음");
+            return;
+        }
+        for (String key : event.getBenefitList().keySet()) {
+            String price = formatNumberWithComma(event.getBenefitList().get(key));
+            System.out.printf("%s: -%s원\n", key, price);
+        }
+    }
+
+    public static void printTotalBenefit(Event event) {
+        System.out.println("\n<총혜택 금액>");
+        if (event.getTotalBenefit() == 0) {
+            System.out.println("0원");
+            return;
+        }
+        String price = formatNumberWithComma(event.getTotalBenefit());
+        System.out.printf("-%s원\n", price);
+    }
+
+    public static void printTotalPrice(Event event, OrderList orderList) {
+        System.out.println("\n<할인 후 예상 결제 금액>");
+        String price = formatNumberWithComma(orderList.getTotalPrice() - event.getTotalDiscount());
+        System.out.printf("%s원\n", price);
     }
 }
