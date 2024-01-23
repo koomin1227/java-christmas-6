@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Date {
     private static final int START_DATE = 1;
     private static final int END_DATE = 31;
+
     private final int date;
     private ArrayList<String> kind;
 
@@ -56,5 +57,9 @@ public class Date {
 
     public ArrayList<String> getKind() {
         return kind;
+    }
+
+    public int getDate() {
+        return date;
     }
 }
