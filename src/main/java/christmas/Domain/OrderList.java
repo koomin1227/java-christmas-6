@@ -10,9 +10,11 @@ import static christmas.Constant.Category.DRINK;
 public class OrderList {
     private static final int MAX_ORDER_BOUND = 20;
     private int totalPrice = 0;
+    private final List<Order> orders;
 
     public OrderList(List<Order> orders) {
         validateOrders(orders);
+        this.orders = orders;
     }
 
     private void validateOrders(List<Order> orders) {
@@ -45,5 +47,9 @@ public class OrderList {
 
     public int getTotalPrice() {
         return totalPrice;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }
