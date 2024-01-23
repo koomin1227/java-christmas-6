@@ -1,6 +1,7 @@
 package christmas;
 
 import christmas.Domain.Date;
+import christmas.Domain.Event;
 import christmas.Domain.OrderList;
 import christmas.View.InputView;
 import christmas.View.OutputView;
@@ -11,6 +12,7 @@ public class ChristmasController {
     public void run() {
         inputOrderInfo();
         outputOrderInfo();
+        outputBenefit();
     }
 
     private void outputOrderInfo() {
@@ -23,5 +25,13 @@ public class ChristmasController {
         this.date = InputView.readDate();
         this.orderList = InputView.readOrder();
         OutputView.printInfoMessage();
+    }
+
+    private void outputBenefit() {
+        Event event = new Event(date, orderList);
+        OutputView.printPresentation(event);
+        OutputView.printBenefitList(event);
+        OutputView.printTotalBenefit(event);
+        OutputView.printTotalPrice(event, orderList);
     }
 }
