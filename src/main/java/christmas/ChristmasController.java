@@ -10,11 +10,12 @@ public class ChristmasController {
     private OrderList orderList;
     public void run() {
         inputOrderInfo();
-        outputMenu();
+        outputOrderInfo();
     }
 
-    private void outputMenu() {
+    private void outputOrderInfo() {
         OutputView.printMenu(orderList);
+        OutputView.printPriceBeforeDiscount(orderList);
     }
 
     private void inputOrderInfo() {
