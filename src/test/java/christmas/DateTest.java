@@ -37,20 +37,21 @@ public class DateTest {
     void 주말인_경우() {
         String input = "1";
         Date date = new Date(input);
-        assertThat(date.getKind()).isEqualTo(DateKind.WEEKEND.getKind());
+        assertThat(date.getKind().get(0)).isEqualTo(DateKind.WEEKEND.getKind());
     }
 
     @Test
     void 평일인_경우() {
         String input = "13";
         Date date = new Date(input);
-        assertThat(date.getKind()).isEqualTo(DateKind.WEEKDAY.getKind());
+        assertThat(date.getKind().get(0)).isEqualTo(DateKind.WEEKDAY.getKind());
     }
 
     @Test
-    void 특별_할인인_경우() {
+    void 특별_할인과_평일인_경우() {
         String input = "25";
         Date date = new Date(input);
-        assertThat(date.getKind()).isEqualTo(DateKind.STAR_DAY.getKind());
+        assertThat(date.getKind().get(0)).isEqualTo(DateKind.STAR_DAY.getKind());
+        assertThat(date.getKind().get(1)).isEqualTo(DateKind.WEEKDAY.getKind());
     }
 }

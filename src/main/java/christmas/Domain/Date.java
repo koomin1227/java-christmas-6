@@ -4,11 +4,13 @@ import christmas.Constant.DateKind;
 import christmas.Constant.DateKindList;
 import christmas.Constant.ErrorMessage;
 
+import java.util.ArrayList;
+
 public class Date {
     private static final int START_DATE = 1;
     private static final int END_DATE = 31;
-    private int date;
-    private String kind;
+    private final int date;
+    private ArrayList<String> kind;
 
     public Date(String date) {
         validateDate(date);
@@ -31,15 +33,16 @@ public class Date {
     }
 
     private void setKind() {
+        this.kind = new ArrayList<>();
         if (isInList(DateKindList.STAR_DAY_LIST.getDayList())) {
-            this.kind = DateKind.STAR_DAY.getKind();
-            return;
+            this.kind.add(DateKind.STAR_DAY.getKind());
         }
         if (isInList(DateKindList.WEEKEND_LIST.getDayList())) {
-            this.kind = DateKind.WEEKEND.getKind();
-            return;
+            this.kind.add(DateKind.WEEKEND.getKind());
         }
-        this.kind = DateKind.WEEKDAY.getKind();
+        if (isInList(DateKindList.WEEKDAY_LIST.getDayList())) {
+            this.kind.add(DateKind.WEEKDAY.getKind());
+        }
     }
 
     private boolean isInList(int [] list) {
@@ -51,7 +54,7 @@ public class Date {
         return false;
     }
 
-    public String getKind() {
+    public ArrayList<String> getKind() {
         return kind;
     }
 }
