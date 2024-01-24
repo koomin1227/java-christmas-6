@@ -33,5 +33,6 @@ public class ChristmasController {
         OutputView.printBenefitList(event);
         OutputView.printTotalBenefit(event);
         OutputView.printTotalPrice(event, orderList);
+        OutputView.printBadge(event.getBadge());
     }
 }
