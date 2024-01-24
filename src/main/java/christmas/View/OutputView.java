@@ -1,6 +1,5 @@
 package christmas.View;
 
-import christmas.Domain.Event;
 import christmas.Domain.Order;
 import christmas.Domain.OrderList;
 
@@ -26,7 +25,7 @@ public class OutputView {
     public static void printPriceBeforeDiscount(OrderList orderList) {
         System.out.println("\n<할인 전 총주문 금액>");
         String price = formatNumberWithComma(orderList.getTotalPrice());
-        System.out.printf("%s원", price);
+        System.out.printf("%s원\n", price);
     }
 
     public static String formatNumberWithComma(int number) {
