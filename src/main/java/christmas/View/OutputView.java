@@ -5,6 +5,7 @@ import christmas.Domain.Order;
 import christmas.Domain.OrderList;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 
 public class OutputView {
     public static void printWelcomeMessage() {
@@ -33,40 +34,40 @@ public class OutputView {
         return decimalFormat.format(number);
     }
 
-    public static void printPresentation(Event event) {
+    public static void printPresentation(HashMap<String, Integer> benefitList) {
         System.out.println("\n<증정 메뉴>");
-        if (event.getBenefitList().containsKey("증정 이벤트")) {
+        if (benefitList.containsKey("증정 이벤트")) {
             System.out.println("샴페인 1개");
         } else {
             System.out.println("없음");
         }
     }
 
-    public static void printBenefitList(Event event) {
+    public static void printBenefitList(HashMap<String, Integer> benefitList) {
         System.out.println("\n<혜택 내역>");
-        if (event.getBenefitList().isEmpty()) {
+        if (benefitList.isEmpty()) {
             System.out.println("없음");
             return;
         }
-        for (String key : event.getBenefitList().keySet()) {
-            String price = formatNumberWithComma(event.getBenefitList().get(key));
+        for (String key : benefitList.keySet()) {
+            String price = formatNumberWithComma(benefitList.get(key));
             System.out.printf("%s: -%s원\n", key, price);
         }
     }
 
-    public static void printTotalBenefit(Event event) {
+    public static void printTotalBenefit(int totalBenefit) {
         System.out.println("\n<총혜택 금액>");
-        if (event.getTotalBenefit() == 0) {
+        if (totalBenefit == 0) {
             System.out.println("0원");
             return;
         }
-        String price = formatNumberWithComma(event.getTotalBenefit());
+        String price = formatNumberWithComma(totalBenefit);
         System.out.printf("-%s원\n", price);
     }
 
-    public static void printTotalPrice(Event event, OrderList orderList) {
+    public static void printTotalPrice(int totalPrice) {
         System.out.println("\n<할인 후 예상 결제 금액>");
-        String price = formatNumberWithComma(orderList.getTotalPrice() - event.getTotalDiscount());
+        String price = formatNumberWithComma(totalPrice);
         System.out.printf("%s원\n", price);
     }
 

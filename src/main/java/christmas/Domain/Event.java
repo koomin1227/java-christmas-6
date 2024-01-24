@@ -8,7 +8,7 @@ public class Event {
     private static final int PRESENTATION_BOUND = 120000;
     private int totalBenefit = 0;
     private int totalDiscount = 0;
-    private String badge = "";
+    private final int totalPrice;
 
     private final HashMap<String, Integer> benefitList = new HashMap<>();
     public Event(Date date, OrderList orderList) {
@@ -16,6 +16,7 @@ public class Event {
             setPresentation(orderList.getTotalPrice());
             setDiscount(date, orderList);
         }
+        this.totalPrice = orderList.getTotalPrice() - totalDiscount;
     }
 
     private void setDiscount(Date date, OrderList orderList) {
@@ -101,5 +102,9 @@ public class Event {
             return "별";
         }
         return null;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
     }
 }

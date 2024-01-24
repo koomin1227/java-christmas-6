@@ -29,10 +29,10 @@ public class ChristmasController {
 
     private void outputBenefit() {
         Event event = new Event(date, orderList);
-        OutputView.printPresentation(event);
-        OutputView.printBenefitList(event);
-        OutputView.printTotalBenefit(event);
-        OutputView.printTotalPrice(event, orderList);
+        OutputView.printPresentation(event.getBenefitList());
+        OutputView.printBenefitList(event.getBenefitList());
+        OutputView.printTotalBenefit(event.getTotalBenefit());
+        OutputView.printTotalPrice(event.getTotalPrice());
         OutputView.printBadge(event.getBadge());
     }
 }
