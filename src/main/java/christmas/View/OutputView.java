@@ -69,4 +69,13 @@ public class OutputView {
         String price = formatNumberWithComma(orderList.getTotalPrice() - event.getTotalDiscount());
         System.out.printf("%s원\n", price);
     }
+
+    public static void printBadge(String badge) {
+        System.out.println("\n<12월 이벤트 배지>");
+        if (badge == null) {
+            System.out.println("없음");
+            return;
+        }
+        System.out.println(badge);
+    }
 }
